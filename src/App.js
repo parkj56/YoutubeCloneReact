@@ -82,7 +82,32 @@ class App extends Component {
       console.log(err)
     }
   }
+  
+  postComment = async (comment) => {
+    try {
+      let videoId = this.state.videoID
+      await axios.post(`${this.commentURL}${videoId}/`, {
+        message: comment.message,
+        video: videoId
+      })
+      console.log(comment)
+      this.getVideoComments(videoId)
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
 
+  postReply = async (reply, commentId) => {
+    try{
+      await axios.post(`${this.commentURL}reply/${commentId}`, {
+        message: reply.message
+      })
+      this.getReplies(this.state.videoID)
+    }catch (err) {
+      console.log(err)
+    }
+  } 
 
   render() {
     return (
