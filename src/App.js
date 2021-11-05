@@ -60,6 +60,28 @@ class App extends Component {
     }
   }
 
+  SearchResults = async (query) => {
+    try {
+      const response = await axios.get(this.searchURL, {
+        params: {
+          q: query.searchQuery,
+          key:'[AIzaSyBSQzLyiqI_VSMPYK_LBWI2z5gGjRXGaIM]',
+          type: "video",
+          part: "snippet",
+          maxResults: 5,
+          kind: "youtube#searchListResponse",
+          regionCode: "US",
+          order: "viewCount"
+        }
+      })
+      this.setState({
+        searchResults: response.data.items
+      })
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
 
 
   render() {

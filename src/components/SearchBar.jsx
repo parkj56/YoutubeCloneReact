@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
-import './SearchBar.css'
+import './TitleBar.css'
 
 function SearchBar(props) {
 
@@ -15,7 +15,7 @@ function SearchBar(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.searchResults(searchQuery)
-        // todo: pass keyword to app.jsx for axios request
+        
     }
 
 
